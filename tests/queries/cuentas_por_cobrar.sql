@@ -2,7 +2,7 @@
 -- Retorna facturas con saldo > 0 y su antigüedad en días a la fecha_corte
 SELECT
     id_factura_orig                                             AS id_factura,
-    numero_factura,
+    numero_factura                                              AS numero,
     fecha_emision,
     fecha_vencimiento,
     cliente,
