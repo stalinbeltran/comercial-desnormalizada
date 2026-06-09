@@ -14,9 +14,9 @@ SELECT
     pp.nombre               AS presentacion,
     i.id_bodega,
     b.nombre                AS bodega,
-    i.stock_actual,
-    i.stock_minimo,
-    i.stock_maximo,
+    i.cantidad              AS stock_actual,
+    i.cantidad_minima       AS stock_minimo,
+    i.cantidad_maxima       AS stock_maximo,
     i.created_at,
     i.updated_at,
     i.deleted_at

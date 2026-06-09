@@ -13,7 +13,7 @@ SELECT
     p.nombre            AS nombre_producto,
     mi.id_bodega,
     b.nombre            AS bodega,
-    mi.fecha,
+    mi.created_at       AS fecha,
     mi.tipo_movimiento,
     mi.cantidad,
     mi.cantidad_anterior,

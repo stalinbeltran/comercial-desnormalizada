@@ -9,7 +9,7 @@ QUERY = """
 SELECT
     fd.id               AS id_detalle_orig,
     fd.id_factura,
-    f.numero_factura,
+    f.numero            AS numero_factura,
     f.fecha_emision,
     f.id_sucursal,
     f.estado            AS estado_factura,

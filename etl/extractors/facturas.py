@@ -8,13 +8,13 @@ from sqlalchemy import text
 QUERY = """
 SELECT
     f.id                AS id_factura_orig,
-    f.numero_factura,
+    f.numero            AS numero_factura,
     f.fecha_emision,
     f.fecha_vencimiento,
     f.id_sucursal,
     s.nombre            AS sucursal,
     f.id_cliente,
-    t.nombre            AS cliente,
+    t.razon_social      AS cliente,
     f.subtotal,
     f.descuento,
     f.impuesto,

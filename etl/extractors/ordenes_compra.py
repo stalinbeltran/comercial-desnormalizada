@@ -9,7 +9,7 @@ QUERY = """
 SELECT
     oc.id               AS id_orden_orig,
     oc.id_proveedor,
-    t.nombre            AS proveedor,
+    t.razon_social      AS proveedor,
     oc.fecha_emision,
     oc.estado,
     oc.total,
