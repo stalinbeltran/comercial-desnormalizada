@@ -93,7 +93,7 @@ def test_inventario_watermark_filtra(engine_origen, seed_inv):
 
 
 def test_inventario_join_no_duplica(engine_origen, seed_inv):
-    chunk = _primer_chunk(inventario.extract, engine_origen)
+    chunk = _todos_chunks(inventario.extract, engine_origen)
     filas_prod = chunk[chunk["id_producto"] == 9000]
     assert len(filas_prod) == 1
 
