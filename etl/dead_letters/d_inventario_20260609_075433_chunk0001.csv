@@ -1,0 +1,4 @@
+id_producto,codigo_producto,nombre_producto,id_presentacion,presentacion,id_bodega,bodega,stock_actual,stock_minimo,stock_maximo,created_at,updated_at,deleted_at
+1,P001,Laptop,1,Unidad,1,Bodega Principal,50.0,10.0,100.0,2026-06-09 07:25:38,2026-06-09 07:25:38,
+2,P002,Mouse,2,Unidad,1,Bodega Principal,200.0,20.0,300.0,2026-06-09 07:25:38,2026-06-09 07:25:38,
+3,P003,Arroz 1kg,3,Unidad,2,Bodega Norte,100.0,15.0,150.0,2026-06-09 07:25:38,2026-06-09 07:25:38,

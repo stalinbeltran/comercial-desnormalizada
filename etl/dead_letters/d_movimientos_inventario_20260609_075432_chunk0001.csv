@@ -1,0 +1,6 @@
+id_movimiento_orig,id_producto,codigo_producto,nombre_producto,id_bodega,bodega,fecha,tipo_movimiento,cantidad,cantidad_anterior,cantidad_posterior,costo_unitario,tipo_referencia,id_referencia,observacion,created_at,updated_at,deleted_at
+1,1,P001,Laptop,1,Bodega Principal,2026-06-09 07:25:38,entrada,50.0,0.0,50.0,800.0,,,,2026-06-09 07:25:38,2026-06-09 07:25:38,
+2,2,P002,Mouse,1,Bodega Principal,2026-06-09 07:25:38,entrada,200.0,0.0,200.0,25.0,,,,2026-06-09 07:25:38,2026-06-09 07:25:38,
+3,3,P003,Arroz 1kg,2,Bodega Norte,2026-06-09 07:25:38,entrada,100.0,0.0,100.0,1.5,,,,2026-06-09 07:25:38,2026-06-09 07:25:38,
+4,1,P001,Laptop,1,Bodega Principal,2026-06-09 07:25:38,salida,5.0,50.0,45.0,800.0,,,,2026-06-09 07:25:38,2026-06-09 07:25:38,
+5,2,P002,Mouse,1,Bodega Principal,2026-06-09 07:25:38,salida,10.0,200.0,190.0,25.0,,,,2026-06-09 07:25:38,2026-06-09 07:25:38,

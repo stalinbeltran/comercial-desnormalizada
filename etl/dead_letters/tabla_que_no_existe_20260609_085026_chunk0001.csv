@@ -1,0 +1,2 @@
+id_orden_orig,id_proveedor,proveedor,fecha_emision,estado,total,created_at,updated_at,deleted_at
+9001,9000,Acme ETL,2025-01-10,pendiente,100.0,2025-01-10 00:00:00,2025-01-10 00:00:00,

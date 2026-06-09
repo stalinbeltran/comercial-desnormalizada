@@ -11,6 +11,17 @@ logger = logging.getLogger(__name__)
 _DEAD_LETTERS = Path(__file__).parent.parent / "dead_letters"
 
 
+def _rows_for_mysql(df: pd.DataFrame) -> list[dict]:
+    """Convierte pandas.Timestamp → datetime nativo; mysql.connector no acepta Timestamp."""
+    rows = []
+    for record in df.to_dict(orient="records"):
+        rows.append({
+            k: (v.to_pydatetime() if isinstance(v, pd.Timestamp) else v)
+            for k, v in record.items()
+        })
+    return rows
+
+
 def upsert(df: pd.DataFrame, tabla: str, engine, unique_cols: list[str]) -> int:
     """INSERT … ON DUPLICATE KEY UPDATE. Devuelve rowcount de MySQL."""
     if df.empty:
@@ -24,7 +35,7 @@ def upsert(df: pd.DataFrame, tabla: str, engine, unique_cols: list[str]) -> int:
         f"VALUES ({placeholders}) "
         f"ON DUPLICATE KEY UPDATE {update_set}"
     )
-    rows = df.to_dict(orient="records")
+    rows = _rows_for_mysql(df)
 
     with engine.begin() as conn:
         result = conn.execute(text(sql), rows)
