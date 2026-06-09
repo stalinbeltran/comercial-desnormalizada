@@ -14,9 +14,11 @@ def load_sql(filename: str) -> str:
 
 def ejecutar_query(conn, sql: str, params: tuple = ()) -> list[dict]:
     cur = conn.cursor(dictionary=True)
-    cur.execute(sql, params)
-    rows = cur.fetchall()
-    cur.close()
+    try:
+        cur.execute(sql, params)
+        rows = cur.fetchall()
+    finally:
+        cur.close()
     return rows
 
 

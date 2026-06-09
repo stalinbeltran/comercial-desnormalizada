@@ -27,12 +27,48 @@ def db_connection():
     conn.close()
 
 
+@pytest.fixture(scope="session", autouse=True)
+def _cleanup_orphaned_data(db_connection):
+    """Limpia datos con id=901 que pudieran haber quedado de sesiones anteriores abortadas."""
+    cur = db_connection.cursor()
+    try:
+        for stmt in [
+            "DELETE FROM pagos_clientes WHERE id IN (901,902,903)",
+            "DELETE FROM facturas_detalle WHERE id_factura IN (901,902,903,904,905,906)",
+            "DELETE FROM facturas WHERE id IN (901,902,903,904,905,906)",
+            "DELETE FROM ordenes_compra WHERE id IN (901,902,903,904,905)",
+            "DELETE FROM movimientos_inventario WHERE id IN (901,902,903)",
+            "DELETE FROM inventario WHERE id IN (901,902)",
+            "DELETE FROM terceros_tipos WHERE id IN (901,902)",
+            "DELETE FROM terceros WHERE id IN (901,902)",
+            "DELETE FROM tipos_identificacion WHERE id = 901",
+            "DELETE FROM formas_pago WHERE id IN (901,902)",
+            "DELETE FROM productos_presentaciones WHERE id IN (901,902)",
+            "DELETE FROM productos WHERE id IN (901,902)",
+            "DELETE FROM bodegas WHERE id = 901",
+            "DELETE FROM sucursales WHERE id = 901",
+            "DELETE FROM categorias WHERE id = 901",
+            "DELETE FROM marcas WHERE id = 901",
+            "DELETE FROM unidades_medida WHERE id = 901",
+            "DELETE FROM empresas WHERE id = 901",
+        ]:
+            cur.execute(stmt)
+        db_connection.commit()
+    except Exception:
+        db_connection.rollback()
+    finally:
+        cur.close()
+    yield
+
+
 @pytest.fixture(autouse=True)
 def rollback(db_connection):
     """Envuelve cada test en una transacción que se revierte al terminar."""
     db_connection.start_transaction()
-    yield
-    db_connection.rollback()
+    try:
+        yield
+    finally:
+        db_connection.rollback()
 
 
 # ---------------------------------------------------------------------------
