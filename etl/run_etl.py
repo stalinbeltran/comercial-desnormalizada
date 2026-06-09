@@ -2,15 +2,19 @@
 Punto de entrada CLI del ETL.
 
 Uso:
-    python etl/run_etl.py                                  # incremental, todas las tablas
-    python etl/run_etl.py --table d_facturas               # incremental, una tabla
-    python etl/run_etl.py --full-refresh                   # recarga total, todas
-    python etl/run_etl.py --full-refresh --table d_facturas
+    py etl/run_etl.py                                  # incremental, todas las tablas
+    py etl/run_etl.py --table d_facturas               # incremental, una tabla
+    py etl/run_etl.py --full-refresh                   # recarga total, todas
+    py etl/run_etl.py --full-refresh --table d_facturas
 """
 
 import argparse
 import logging
 import sys
+from pathlib import Path
+
+# Garantiza que la raíz del proyecto esté en sys.path al ejecutar como script
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from etl import pipeline
 

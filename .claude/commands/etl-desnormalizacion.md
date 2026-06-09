@@ -283,13 +283,13 @@ def upsert(df, tabla: str, engine, unique_cols: list[str]):
 
 ```bash
 # Carga incremental (todas las tablas)
-python etl/run_etl.py
+py etl/run_etl.py
 
 # Recarga completa de una tabla
-python etl/run_etl.py --full-refresh --table d_facturas
+py etl/run_etl.py --full-refresh --table d_facturas
 
 # Recarga completa de todo
-python etl/run_etl.py --full-refresh
+py etl/run_etl.py --full-refresh
 ```
 
 ---
